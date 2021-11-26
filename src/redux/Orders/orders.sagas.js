@@ -1,10 +1,12 @@
 import ordersTypes from './orders.types';
 import { takeLatest, put, all, call } from 'redux-saga/effects';
 import { handleSaveOrder, handleGetUserOrderHistory,
-  handleGetOrder } from './orders.helpers';
+  handleGetOrder,handleFetchAdminOrder } from './orders.helpers';
 import { auth } from './../../firebase/utils';
 import { clearCart } from './../Cart/cart.actions';
-import { setUserOrderHistory, setOrderDetails } from './orders.actions';
+import { setUserOrderHistory, setOrderDetails,setAdminOrder } from './orders.actions';
+import { yellow } from '@material-ui/core/colors';
+import productsTypes from '../Products/products.types';
 
 export function* getUserOrderHistory({ payload }) {
   try {
@@ -30,9 +32,9 @@ export function* saveOrder({ payload }) {
       orderUserID: auth.currentUser.uid,
       orderCreatedDate: timestamps
     });
-    yield put(
-      clearCart()
-    )
+    // yield put(
+    //   clearCart()
+    // )
 
   } catch (err) {
     // console.log(err);
@@ -60,10 +62,30 @@ export function* onGetOrderDetailsStart() {
   yield takeLatest(ordersTypes.GET_ORDER_DETAILS_START, getOrderDetails);
 };
 
+export function* fetchAdminOrder(){
+  try{
+
+    const orders = yield handleFetchAdminOrder();
+    yield put(
+      setAdminOrder(orders)
+    )
+
+  }catch(err){
+    // console.log(err)
+  }
+}
+
+
+export function* onFetchOrderAdminStart(){
+  yield takeLatest(ordersTypes.FETCH_ORDER_ADMIN,fetchAdminOrder)
+}
+
 export default function* ordersSagas() {
   yield all([
     call(onSaveOrderHistoryStart),
     call(onGetUserOrderHistoryStart),
     call(onGetOrderDetailsStart),
+    call(onFetchOrderAdminStart)
+    
   ])
 }

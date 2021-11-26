@@ -28,6 +28,7 @@ import ProductDetails from './pages/ProductDetails';
 import Cart from './pages/Cart';
 import Payment from './pages/Payment';
 import Order from './pages/Order';
+ import AdminOrder from './pages/AdminOrder/index'
 import './default.scss';
 
 const App = props => {
@@ -68,13 +69,13 @@ const App = props => {
             <Cart />
           </MainLayout>
         )} />
-        {/* <Route path="/payment" render={() => (
+        <Route path="/payment" render={() => (
           <WithAuth>
             <MainLayout>
               <Payment />
             </MainLayout>
           </WithAuth>
-        )} /> */}
+        )} />
         <Route path="/registration" render={() => (
           <MainLayout>
             <Registration />
@@ -109,6 +110,13 @@ const App = props => {
           <WithAdminAuth>
             <AdminLayout>
               <Admin />
+            </AdminLayout>
+          </WithAdminAuth>
+        )} />
+         <Route path="/orderview" render={() => (
+          <WithAdminAuth>
+            <AdminLayout>
+              <AdminOrder />
             </AdminLayout>
           </WithAdminAuth>
         )} />

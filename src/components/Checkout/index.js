@@ -1,20 +1,44 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { selectCartItems, selectCartTotal } from './../../redux/Cart/cart.selectors';
+import { useSelector,useDispatch } from 'react-redux';
+import { selectCartItems, selectCartTotal,selectCartItemsCount } from './../../redux/Cart/cart.selectors';
 import { createStructuredSelector } from 'reselect';
 import './styles.scss';
 import Button from './../forms/Button';
 import Item from './Item';
+import {saveOrderHistory} from './../../redux/Orders/orders.actions'
 
 const mapState = createStructuredSelector({
   cartItems: selectCartItems,
-  total: selectCartTotal
+  total: selectCartTotal,
+  itemCount: selectCartItemsCount,
 });
 
 const Checkout = ({ }) => {
   const history = useHistory();
-  const { cartItems, total } = useSelector(mapState);
+  const { cartItems, total, itemCount } = useSelector(mapState);
+  
+  const dispatch = useDispatch();
+  const configOrder={
+    orderTotal:total,
+    orderItems: cartItems.map(item => {
+      const { documentID, productThumbnail, productName,
+        productPrice, quantity } = item;
+
+        return {
+          documentID,
+          productThumbnail,
+          productName,
+          productPrice,
+          quantity
+        }
+      })
+
+  }
+  const orderHis=()=>{
+    dispatch(saveOrderHistory(configOrder));
+    history.push('/payment');
+  }
 
   const errMsg = 'You have no items in your cart.';
 
@@ -100,12 +124,12 @@ const Checkout = ({ }) => {
                                   </Button>
                                 </td>
                                 <td>
-                                  {/* <Button onClick={() => history.push('/payment')}>
-                                    Checkout
-                                  </Button> */}
-                                  <Button>
+                                  <Button onClick={() => orderHis()}>
                                     Checkout
                                   </Button>
+                                  {/* <Button>
+                                    Checkout
+                                  </Button> */}
                                 </td>
                               </tr>
                             </tbody>

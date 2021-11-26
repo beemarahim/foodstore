@@ -24,3 +24,14 @@ export const setOrderDetails = order => ({
   type: ordersTypes.SET_ORDER_DETAILS,
   payload: order
 });
+
+export const fetchAdminOrder=()=>({
+  type:ordersTypes.FETCH_ORDER_ADMIN,
+})
+
+export const setAdminOrder=orders=>({
+  type:ordersTypes.SET_ORDER_ADMIN,
+  payload:orders
+})
+
+ 

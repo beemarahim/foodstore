@@ -3,6 +3,7 @@ import { Link, useLocation  } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { signOutUserStart } from './../../redux/User/user.actions';
 import { selectCartItemsCount } from './../../redux/Cart/cart.selectors';
+import {clearCart} from './../../redux/Cart/cart.actions'
 import './styles.scss';
 
 import Logo from './../../assets/logo.png';
@@ -20,6 +21,7 @@ const Header = props => {
 
   const signOut = () => {
     dispatch(signOutUserStart());
+    dispatch(clearCart());
   };
 
   useEffect(() => {

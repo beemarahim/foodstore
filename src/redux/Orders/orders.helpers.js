@@ -61,3 +61,27 @@ export const handleGetOrder = orderID => {
       })
   })
 }
+
+export const handleFetchAdminOrder=()=>{
+  return new Promise((resolve,reject)=>{
+    firestore
+    .collection('orders')
+    .get()
+    .then(snapshot=>{
+      const ordersArray=snapshot.docs.map(doc=>{
+        return {
+          ...doc.data(),
+          documentID:doc.id
+        }
+      })
+      resolve(ordersArray)
+
+    })
+    .catch(err=>{
+      reject(err)
+    })
+  })
+}
+
+
+
