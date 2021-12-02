@@ -18,6 +18,7 @@ const Header = props => {
   const [activeMenu, setActiveMenu] = useState(false);
   const dispatch = useDispatch();
   const { currentUser, totalNumCartItems } = useSelector(mapState);
+  const name = {currentUser}
 
   const signOut = () => {
     dispatch(signOutUserStart());
@@ -37,7 +38,7 @@ const Header = props => {
           </Link>
         </div>
 
-        <nav className={`mainMenu ${activeMenu ? 'active' : ''}`}>
+        {/* <nav className={`mainMenu ${activeMenu ? 'active' : ''}`}>
           <ul>
             <li>
               <Link to="/">
@@ -50,11 +51,18 @@ const Header = props => {
               </Link>
             </li>
           </ul>
-        </nav>
+        </nav> */}
 
         <div className="callToActions">
 
           <ul>
+
+          <li>
+              <Link to="/">
+                Home
+               
+              </Link>
+            </li>
 
             <li>
               <Link to="/cart">

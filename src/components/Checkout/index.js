@@ -7,6 +7,8 @@ import './styles.scss';
 import Button from './../forms/Button';
 import Item from './Item';
 import {saveOrderHistory} from './../../redux/Orders/orders.actions'
+import {addAnalyticsStart} from './../../redux/Analytics/analytics.actions'
+import {clearCart} from './../../redux/Cart/cart.actions'
 
 const mapState = createStructuredSelector({
   cartItems: selectCartItems,
@@ -35,8 +37,25 @@ const Checkout = ({ }) => {
       })
 
   }
+
+  // const configAnalytics={
+  //   orderItems: cartItems.map(item => {
+  //     const { documentID, productThumbnail, productName,
+  //       productPrice, quantity } = item;
+
+  //       return {
+  //         documentID,
+  //         productThumbnail,
+  //         productName,
+  //         productPrice,
+  //         quantity
+  //       }
+  //     })
+  // }
   const orderHis=()=>{
-    dispatch(saveOrderHistory(configOrder));
+    // dispatch(saveOrderHistory(configOrder));
+    // dispatch(addAnalyticsStart(configAnalytics))
+    // dispatch(clearCart())
     history.push('/payment');
   }
 

@@ -48,10 +48,10 @@ const ProductResults = ({ }) => {
       value: ''
     }, {
       name: 'Chineese',
-      value: 'Chineese'
+      value: 'chineese'
     }, {
       name: 'Pizza',
-      value: 'Pizza'
+      value: 'pizza'
     }],
     handleChange: handleFilter
   };
@@ -74,7 +74,7 @@ const ProductResults = ({ }) => {
     <div className="products">
 
       <h1>
-        Browse Products
+        Browse Menu
       </h1>
 
       <FormSelect {...configFilters} />

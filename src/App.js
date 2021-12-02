@@ -49,7 +49,7 @@ const App = props => {
           </HomepageLayout>
         )}
         />
-        <Route exact path="/search" render={() => (
+        <Route exact  path="/search" render={() => (
           <MainLayout>
             <Search />
           </MainLayout>
@@ -71,9 +71,9 @@ const App = props => {
         )} />
         <Route path="/payment" render={() => (
           <WithAuth>
-            <MainLayout>
+           
               <Payment />
-            </MainLayout>
+            
           </WithAuth>
         )} />
         <Route path="/registration" render={() => (

@@ -67,6 +67,23 @@ export const handleDeleteProduct = documentID => {
   });
 }
 
+// export const handleUpdateStock = (documentID) =>{
+//   return new Promise((resolve,reject)=>{
+//     firestore
+//     .collection('products')
+//     .doc(documentID)
+//     .update({
+      
+//     })
+//     .then(()=>{
+//       resolve();
+//     })
+//     .catch(err=>{
+//       reject(err);
+//     })
+//   })
+// }
+
 export const handleFetchProduct = (productID) => {
   return new Promise((resolve, reject) => {
     firestore

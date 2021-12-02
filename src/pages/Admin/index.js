@@ -22,6 +22,7 @@ const Admin = props => {
   const [productThumbnail, setProductThumbnail] = useState('');
   const [productPrice, setProductPrice] = useState(0);
   const [productDesc, setProductDesc] = useState('');
+  const [productStock,setProductStock] = useState(0)
 
   const { data, queryDoc, isLastPage } = products;
 
@@ -40,11 +41,12 @@ const Admin = props => {
 
   const resetForm = () => {
     setHideModal(true);
-    setProductCategory('mens');
+    setProductCategory('');
     setProductName('');
     setProductThumbnail('');
     setProductPrice(0);
     setProductDesc('');
+    setProductStock(0)
   };
 
   const handleSubmit = e => {
@@ -57,6 +59,7 @@ const Admin = props => {
         productThumbnail,
         productPrice,
         productDesc,
+        productStock
       })
     );
     resetForm();
@@ -100,11 +103,11 @@ const Admin = props => {
             <FormSelect
               label="Category"
               options={[{
-                value: "Chineese",
-                name: "Chineese"
+                value: "chineese",
+                name: "chineese"
               }, {
-                value: "Pizza",
-                name: "Pizza"
+                value: "pizza",
+                name: "pizza"
               }]}
               handleChange={e => setProductCategory(e.target.value)}
             />
@@ -119,9 +122,11 @@ const Admin = props => {
             <FormInput
               label="Main image URL"
               type="url"
+              // type="file" accept="image/*" 
+              // enctype='multipart/'
               value={productThumbnail}
               handleChange={e => setProductThumbnail(e.target.value)}
-            />
+            />             
 
             <FormInput
               label="Price"
@@ -132,6 +137,15 @@ const Admin = props => {
               value={productPrice}
               handleChange={e => setProductPrice(e.target.value)}
             />
+
+             {/* <FormInput
+              label="Stock"
+              type="number"
+              min="0.00"
+              max="10000.00"
+              value={productStock}
+              handleChange={e => setProductStock(e.target.value)}
+            /> */}
 
             <CKEditor
               onChange={evt => setProductDesc(evt.editor.getData())}
@@ -167,7 +181,8 @@ const Admin = props => {
                         productName,
                         productThumbnail,
                         productPrice,
-                        documentID
+                        documentID,
+                        productStock
                       } = product;
 
                       return (
@@ -176,11 +191,16 @@ const Admin = props => {
                             <img className="thumb" src={productThumbnail} />
                           </td>
                           <td>
-                            {productName}
+                            Name:{productName}
                           </td>
                           <td>
-                            {productPrice}
+                            Price:{productPrice}
                           </td>
+                          {/* <td>
+                            Stock:{productStock}
+                          </td> */}
+                         
+
                           <td>
                             <Button onClick={() => dispatch(deleteProductStart(documentID))}>
                               Delete

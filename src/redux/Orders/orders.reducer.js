@@ -3,7 +3,7 @@ import ordersTypes from './orders.types';
 const INITIAL_STATE = {
   orderHistory: [],
   orderDetails: {},
-  orderAdmin:[]
+  orders:{}
 };
 
 const ordersReducer = (state=INITIAL_STATE, action) => {
@@ -21,7 +21,7 @@ const ordersReducer = (state=INITIAL_STATE, action) => {
     case ordersTypes.SET_ORDER_ADMIN:
       return{
         ...state,
-        orderAdmin:action.payload
+        orders:action.payload
       }  
     default:
       return state;

@@ -5,6 +5,7 @@ import {
 } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import { setOrderDetails } from './../../redux/Orders/orders.actions';
+import Button from './../../components/forms/Button'
 
 const columns = [
   {
@@ -22,7 +23,13 @@ const columns = [
   {
     id: 'quantity',
     label: 'Quantity'
-  }
+  },
+  // {
+  //   id:'order status',
+  //   label:'Status'
+  // }
+  
+
 ]
 
 const styles = {
@@ -33,7 +40,7 @@ const styles = {
 const formatText = (columnName, columnValue) => {
   switch(columnName) {
     case 'productPrice':
-      return `£${columnValue}`;
+      return `${columnValue}`;
     case 'productThumbnail':
       return <img src={columnValue} width={250} />;
     default:
@@ -97,6 +104,8 @@ const OrderDetails = ({ order }) => {
               </TableRow>
             )
           })}
+
+          {/* <Button>Order Pending</Button> */}
 
         </TableBody>
 

@@ -5,6 +5,10 @@ export const saveOrderHistory = order => ({
   payload: order
 });
 
+export const getAdminOrderHistory =()=>({
+  type: ordersTypes.GET_ADMIN_ORDER_HISTORY_START
+})
+
 export const getUserOrderHistory = uid => ({
   type: ordersTypes.GET_USER_ORDER_HISTORY_START,
   payload: uid

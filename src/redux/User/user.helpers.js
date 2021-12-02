@@ -1,4 +1,5 @@
 import { auth } from './../../firebase/utils';
+import {firestore} from './../../firebase/utils'
 
 export const handleResetPasswordAPI = (email) => {
   const config = {
@@ -16,3 +17,26 @@ export const handleResetPasswordAPI = (email) => {
       });
   });
 };
+
+
+// export const handleFetchAdminOrder=()=>{
+//   return new Promise((resolve,reject)=>{
+//     firestore
+//     .collection('users')
+//     .get()
+//     .then(snapshot=>{
+//       const ordersArray=snapshot.docs.map(doc=>{
+//         return {
+//           ...doc.data(),
+//           documentID:doc.id
+//         }
+//       })
+//       resolve(usersArray)
+
+//     })
+//     .catch(err=>{
+//       reject(err)
+//     })
+//   })
+// }
+
