@@ -62,7 +62,7 @@ const StripeCheckoutButton = (props) => {
   // const dispatch = useDispatch()
   const history = useHistory()
   const notify =()=>{
-    toast('notification')
+    toast.success('Order Succesfull')
   } 
 
   //  const priceForStripe = price * 100;
