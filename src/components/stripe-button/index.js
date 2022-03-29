@@ -66,7 +66,7 @@ const StripeCheckoutButton = (props) => {
   } 
 
   //  const priceForStripe = price * 100;
-   const publishableKey = 'pk_test_KzWXSJxJu3foClpqvGjmUlnp00c4Xcfgbb';
+   const publishableKey = 'pk_test_51KBoyJSJhD7Ppv6hGMKKVF17mBYR9xpKPwrbKsHl5yudtgcvUWta9wdofjfhs5WZLrKSpahkQBwTfgiBkgZmG99A00oVRT0WKZ';
    
    const onToken = token => {
     history.push('/dashboard')
