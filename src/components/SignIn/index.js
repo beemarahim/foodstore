@@ -55,7 +55,7 @@ const SignIn = props => {
             type="email"
             name="email"
             value={email}
-            placeholder="Emai"
+            placeholder="Email"
             handleChange={e => setEmail(e.target.value)}
           />
 

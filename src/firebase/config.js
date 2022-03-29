@@ -1,10 +1,9 @@
 // firebase config
-export const firebaseConfig =  {
-  apiKey: "AIzaSyBLFleiY0-9DLqQo_BS8UgKhoKT2DJl9TE",
-  authDomain: "food-8f2c7.firebaseapp.com",
-  projectId: "food-8f2c7",
-  storageBucket: "food-8f2c7.appspot.com",
-  messagingSenderId: "737275822320",
-  appId: "1:737275822320:web:263d1dcc5d5416edf6c235",
-  measurementId: "G-N1RC13R94T"
-  };
+export const firebaseConfig = {
+  apiKey: "AIzaSyB-nyy_2qYE9Eg5iBI7b-jog1IEy9Iqwo4",
+  authDomain: "foodstore-72358.firebaseapp.com",
+  projectId: "foodstore-72358",
+  storageBucket: "foodstore-72358.appspot.com",
+  messagingSenderId: "1002567689343",
+  appId: "1:1002567689343:web:f1cc9c085b0370be7e4b4a"
+};

@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { checkUserSession } from './redux/User/user.actions';
+// import { auth } from './firebase/utils';
 
 // components
 import AdminToolbar from './components/AdminToolbar';
@@ -76,7 +77,7 @@ const App = props => {
             
           </WithAuth>
         )} />
-        <Route path="/registration" render={() => (
+        <Route path="/registration" render={() =>  (
           <MainLayout>
             <Registration />
           </MainLayout>
